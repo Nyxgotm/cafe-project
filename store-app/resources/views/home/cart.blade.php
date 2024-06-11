@@ -57,5 +57,70 @@
     </div>
 </div>
 <!-- ======= End Top Bar ======= -->
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-cente">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
+        <h1 class="logo me-auto me-lg-0"><a href="index.html">Cafe Baran</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <li><a class="nav-link scrollto active" href="{{route('home')}}">Home</a></li>
+                <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
+                <form method="post" action="{{ route('logout') }}">
+                    @csrf
+                    <button ><a class="nav-link scrollto" >Logout</a></button>
+                </form>
+
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+        <a href="#book-a-table" class="book-a-table-btn scrollto d-none d-lg-flex">Cart</a>
+
+    </div>
+</header><!-- End Header -->
+
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+        <div class="row">
+            <div class="col-lg-8">
+                <section id="menu" class="menu">
+                <div class="container" data-aos="fade-up">
+                    <img src="assets/img/menu/lobster-roll.jpg" class="menu-img" alt="">
+                    <div class="menu-content">
+                        <a href="#">Lobster Roll</a><span>$12.95</span>
+                    </div>
+                    <div class="menu-ingredients">
+                        Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
+                    </div>
+                </div>
+                </section>
+
+            </div>
+
+        </div>
+    </div>
+</section><!-- End Hero -->
+
+<!-- ======= Menu Section ======= -->
+
+
+
+
+
+</section><!-- End Menu Section -->
 </body>
+<!-- Vendor JS Files -->
+<script src="/assets(1)/assets/vendor/aos/aos.js"></script>
+<script src="/assets(1)/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets(1)/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets(1)/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets(1)/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/assets(1)/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/assets(1)/assets/js/main.js"></script>
+</html>

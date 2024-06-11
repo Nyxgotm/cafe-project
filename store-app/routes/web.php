@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Panel\CategoryController;
 use App\Http\Controllers\Panel\ProductController;
@@ -63,5 +64,5 @@ Route::get('/home',[HomeController::class,'index'])->name('home');
 Auth::routes();
 
 //start cart Route
-Route::get('/cart');
+Route::get('/cart',[CartController::class,'index'])->name('cart');
 //End cart Route

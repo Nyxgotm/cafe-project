@@ -87,7 +87,7 @@
             </form>
         </div><!-- End Search Bar -->
 
-        <a href="#book-a-table" class="book-a-table-btn scrollto d-none d-lg-flex">Cart</a>
+        <a href="{{route('cart')}}" class="book-a-table-btn scrollto d-none d-lg-flex">Cart</a>
 
     </div>
 </header><!-- End Header -->
@@ -102,7 +102,7 @@
 
                 <div class="btns">
                     <a href="#menu" class="btn-menu animated fadeInUp scrollto">Our Menu</a>
-                    <a href="#book-a-table" class="btn-book animated fadeInUp scrollto">Cart</a>
+                    <a href="{{route('cart')}}" class="btn-book animated fadeInUp scrollto">Cart</a>
                 </div>
             </div>
 
@@ -148,6 +148,7 @@
                 <div class="menu-ingredients">
                     {{$product->description}}
                 </div>
+            </div>
         @endforeach
 
 
