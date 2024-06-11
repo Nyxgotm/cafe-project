@@ -11,8 +11,8 @@ class CategoryController extends Controller
 {
     function index()
     {
-
-        return view('panel.categories.index');
+        $categories = Category::all();
+        return view('panel.categories.index', compact('categories'));
     }
 
     function create()
@@ -29,12 +29,6 @@ class CategoryController extends Controller
             'image' => str_replace('public/', '', $path),
         ]);
         return redirect('/categories');
-    }
-
-    function show()
-    {
-        $categories = Category::all();
-        return view('panel.categories.index', compact('categories'));
     }
 
     function destroy(Category $category)

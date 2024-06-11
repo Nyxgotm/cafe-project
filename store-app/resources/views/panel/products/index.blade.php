@@ -73,14 +73,14 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link  collapsed "  href="">
+            <a class="nav-link  collapsed "  href="{{route('categories')}}">
                 <i class="bi bi-grid"></i>
                 <span>Categories</span>
             </a>
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link" href="{{redirect('products')}}">
+            <a class="nav-link" href="{{route('products')}}">
                 <i class="bi bi-envelope"></i>
                 <span>Products</span>
             </a>
@@ -92,7 +92,7 @@
 <main id="main" class="main">
     <section class="section">
         <div class="row">
-            <div class="col-lg-6">
+            <div>
                 <div class="card">
                     <div class="card-body">
                         <!-- Table with hoverable rows -->
@@ -112,20 +112,19 @@
                             </thead>
                             <tbody>
 
-
+                            @foreach($products as $product)
                                 <tr>
-                                    <th></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td><img></td>
-                                    <td></td>
-                                    <td><a href="">Delete</a></td>
-                                    <td><a href="">Update</a></td>
+                                    <th>{{$product->product_id}}</th>
+                                    <td>{{$product->title}}</td>
+                                    <td>{{$product->price}}</td>
+                                    <td><img src="{{asset('storage/'.$product->image)}}"></td>
+                                    <td>{{$product->description}}</td>
+                                    <td>{{$product->category->title}}</td>
+                                    <td><a href="{{route('products.delete',$product->product_id)}}">Delete</a></td>
+                                    <td><a href="{{route('products.edit',$product->product_id)}}">Update</a></td>
                                 </tr>
 
-
-                            </tbody>
+                            @endforeach
                         </table>
                         <!-- End Table with hoverable rows -->
                     </div>
@@ -142,15 +141,15 @@
 
 
 <!-- Vendor JS Files -->
-<script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/chart.js/chart.umd.js"></script>
-<script src="assets/vendor/echarts/echarts.min.js"></script>
-<script src="assets/vendor/quill/quill.js"></script>
-<script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-<script src="assets/vendor/tinymce/tinymce.min.js"></script>
-<script src="assets/vendor/php-email-form/validate.js"></script>
+<script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/chart.js/chart.umd.js"></script>
+<script src="/assets/vendor/echarts/echarts.min.js"></script>
+<script src="/assets/vendor/quill/quill.js"></script>
+<script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
+<script src="/assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="/assets/vendor/php-email-form/validate.js"></script>
 
 <!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
+<script src="/assets/js/main.js"></script>
 </html>

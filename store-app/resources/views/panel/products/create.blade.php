@@ -121,7 +121,7 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label" >Description</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name=description">
+                                    <textarea name="description"></textarea>
                                 </div>
                             </div>
 
@@ -129,9 +129,8 @@
                                 <label class="col-sm-2 col-form-label">Category</label>
                                 <div class="col-sm-10">
 
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select name="category" class="form-select" aria-label="Default select example">
 
-                                        <option selected>Open this select menu</option>
                                         @foreach($categories as $category)
                                         <option value="{{$category->category_id}}">{{$category->title}}</option>
                                         @endforeach
@@ -158,3 +157,16 @@
 
 </main>
 </body>
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/chart.js/chart.umd.js"></script>
+<script src="/assets/vendor/echarts/echarts.min.js"></script>
+<script src="/assets/vendor/quill/quill.js"></script>
+<script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
+<script src="/assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/assets/js/main.js"></script>
+</html>

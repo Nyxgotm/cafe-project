@@ -73,7 +73,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href="{{redirect('categories')}}">
+            <a class="nav-link " href="{{route('categories')}}">
                 <i class="bi bi-grid"></i>
                 <span>Categories</span>
             </a>
@@ -92,7 +92,7 @@
 <main id="main" class="main">
     <section class="section">
         <div class="row">
-            <div class="col-lg-6">
+            <div>
                 <div class="card">
                     <div class="card-body">
     <!-- Table with hoverable rows -->
@@ -110,13 +110,13 @@
         <tbody>
 
         @foreach($categories as $category)
-            <tr>
+         <tr>
             <th>{{$category->category_id}}</th>
             <td>{{$category->title}}</td>
             <td><img src="{{asset('storage/'.$category->image)}}"></td>
             <td><a href="{{route('categories.delete',$category->category_id)}}">Delete</a></td>
             <td><a href="{{route('categories.edit',$category->category_id)}}">Update</a></td>
-          </tr>
+         </tr>
         @endforeach
 
         </tbody>

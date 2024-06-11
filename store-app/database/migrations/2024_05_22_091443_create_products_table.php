@@ -14,8 +14,8 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id('product_id')->autoIncrement();
-            $table->foreignId('category_id')->constrained();
+            $table->string('product_id')->unique();
+            $table->string('category_id');
             $table->string('title');
             $table->integer('price');
             $table->string('image')->nullable();

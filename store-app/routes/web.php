@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Panel\CategoryController;
 use App\Http\Controllers\Panel\ProductController;
 use App\Models\User;
@@ -26,8 +28,6 @@ Route::get('/create', [CategoryController::class,'create'])->name('create');
 
 Route::post('/categories/store', [CategoryController::class,'store'])->name('categories.store');
 
-Route::get('/categories',[CategoryController::class,'show']);
-
 Route::get('/categories/delete/{category}',[CategoryController::class,'destroy'])->name('categories.delete');
 
 Route::get('/categories/edit/{category}' ,[CategoryController::class,'edit'])->name('categories.edit');
@@ -44,7 +44,24 @@ Route::get('/create/product',[ProductController::class,'create'])->name('create.
 
 Route::post('/products/store',[ProductController::class,'store'])->name('products.store');
 
+Route::get('/products/delete/{product}',[ProductController::class,'destroy'])->name('products.delete');
+
+Route::get('/products/edit/{product}', [ProductController::class,'edit'])->name('products.edit');
+
+Route::post('/products/update/{product}',[ProductController::class,'update'])->name('products.update');
+
 //End Product Route
 
+//start home Route
+
+Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/home',[HomeController::class,'index'])->name('home');
+//End home Route
 
 
+
+Auth::routes();
+
+//start cart Route
+Route::get('/cart');
+//End cart Route
