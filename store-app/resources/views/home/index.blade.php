@@ -75,7 +75,9 @@
                     @csrf
                     <button ><a class="nav-link scrollto" >Logout</a></button>
                 </form>
-
+                @if(Auth::user()->admin=='role')
+                    <li><a class="nav-link scrollto" href="{{ route('categories') }}">Panel</a></li>
+                @endif
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

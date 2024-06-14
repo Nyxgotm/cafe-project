@@ -13,7 +13,7 @@ class CartController extends Controller
             return view('home.cart');
         }
         else{
-            return  redirect('/');
+            return  redirect(route('login'));
 
         }
 

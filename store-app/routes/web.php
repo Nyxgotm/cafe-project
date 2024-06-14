@@ -20,38 +20,42 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware(['web','auth','role:admin'])->group(function (){
+    //Start Category Route
 
-//Start Category Route
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+    Route::get('/create', [CategoryController::class,'create'])->name('create');
 
-Route::get('/create', [CategoryController::class,'create'])->name('create');
+    Route::post('/categories/store', [CategoryController::class,'store'])->name('categories.store');
 
-Route::post('/categories/store', [CategoryController::class,'store'])->name('categories.store');
+    Route::get('/categories/delete/{category}',[CategoryController::class,'destroy'])->name('categories.delete');
 
-Route::get('/categories/delete/{category}',[CategoryController::class,'destroy'])->name('categories.delete');
+    Route::get('/categories/edit/{category}' ,[CategoryController::class,'edit'])->name('categories.edit');
 
-Route::get('/categories/edit/{category}' ,[CategoryController::class,'edit'])->name('categories.edit');
+    Route::post('/categories/update/{category}',[CategoryController::class,'update'])->name('categories.update');
 
-Route::post('/categories/update/{category}',[CategoryController::class,'update'])->name('categories.update');
+    //End Category Route
 
-//End Category Route
+    //Start Product Route
 
-//Start Product Route
+    Route::get('/products',[ProductController::class,'index'])->name('products');
 
-Route::get('/products',[ProductController::class,'index'])->name('products');
+    Route::get('/create/product',[ProductController::class,'create'])->name('create.products');
 
-Route::get('/create/product',[ProductController::class,'create'])->name('create.products');
+    Route::post('/products/store',[ProductController::class,'store'])->name('products.store');
 
-Route::post('/products/store',[ProductController::class,'store'])->name('products.store');
+    Route::get('/products/delete/{product}',[ProductController::class,'destroy'])->name('products.delete');
 
-Route::get('/products/delete/{product}',[ProductController::class,'destroy'])->name('products.delete');
+    Route::get('/products/edit/{product}', [ProductController::class,'edit'])->name('products.edit');
 
-Route::get('/products/edit/{product}', [ProductController::class,'edit'])->name('products.edit');
-
-Route::post('/products/update/{product}',[ProductController::class,'update'])->name('products.update');
+    Route::post('/products/update/{product}',[ProductController::class,'update'])->name('products.update');
 
 //End Product Route
+});
+
+
+
 
 //start home Route
 
