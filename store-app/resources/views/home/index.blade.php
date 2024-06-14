@@ -68,6 +68,7 @@
 
         <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
+
                 <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                 <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
                 <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>
@@ -75,9 +76,12 @@
                     @csrf
                     <button ><a class="nav-link scrollto" >Logout</a></button>
                 </form>
-                @if(Auth::user()->admin=='role')
+
+                @foreach($users as $user)
+                @if(Auth::user()->role=='admin')
                     <li><a class="nav-link scrollto" href="{{ route('categories') }}">Panel</a></li>
                 @endif
+                @endforeach
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

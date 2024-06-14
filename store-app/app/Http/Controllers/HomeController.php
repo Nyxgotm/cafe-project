@@ -13,6 +13,7 @@ class HomeController extends Controller
     function index(){
 
         $categories = Category::all();
+        $users=User::all();
         $products = Product::query();
         if (request("category")){
             $products = $products->where('category_id', request("category"))->get();
@@ -23,7 +24,7 @@ class HomeController extends Controller
         }
         $products=$products->get();
 
-        return view('home.index', compact('categories','products'));
-        dd(Auth::user());
+        return view('home.index', compact('categories','products','users'));
+
     }
 }
