@@ -78,7 +78,7 @@
                 </form>
 
                 @foreach($users as $user)
-                @if(Auth::user()->role=='admin')
+                @if(Auth::check() && Auth::user()->role=='admin')
                     <li><a class="nav-link scrollto" href="{{ route('categories') }}">Panel</a></li>
                 @endif
                 @endforeach
@@ -149,7 +149,7 @@
             <div class="col-lg-6 menu-item filter-starters">
                 <img src="{{asset('storage/'.$product->image)}}" class="menu-img" alt="">
                 <div class="menu-content">
-                    <a href="#">{{$product->title}}</a><span>{{$product->price}}</span>
+                    <a href="{{route('add.cart',$product->product_id)}}">{{$product->title}}</a><span>{{$product->price}}</span>
                 </div>
                 <div class="menu-ingredients">
                     {{$product->description}}

@@ -69,4 +69,6 @@ Auth::routes();
 
 //start cart Route
 Route::get('/cart',[CartController::class,'index'])->name('cart');
+
+Route::get('/product/cart/{product}',[CartController::class,'create'])->name('add.cart');
 //End cart Route

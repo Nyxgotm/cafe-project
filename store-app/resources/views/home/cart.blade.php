@@ -88,15 +88,17 @@
         <div class="row">
             <div class="col-lg-8">
                 <section id="menu" class="menu">
+                    @foreach($products as $product)
                 <div class="container" data-aos="fade-up">
-                    <img src="assets/img/menu/lobster-roll.jpg" class="menu-img" alt="">
+                    <img src="{{asset('storage/'.$product->image)}}" class="menu-img" alt="">
                     <div class="menu-content">
-                        <a href="#">Lobster Roll</a><span>$12.95</span>
+                        <a href="#">{{$product->title}}</a><span>{{$product->price}}</span>
                     </div>
                     <div class="menu-ingredients">
-                        Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
+                        {{$product->description}}
                     </div>
                 </div>
+                    @endforeach
                 </section>
 
             </div>
