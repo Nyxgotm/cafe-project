@@ -88,17 +88,17 @@
         <div class="row">
             <div class="col-lg-8">
                 <section id="menu" class="menu">
-                    @foreach($products as $product)
+
                 <div class="container" data-aos="fade-up">
-                    <img src="{{asset('storage/'.$product->image)}}" class="menu-img" alt="">
+                    <img src="" class="menu-img" alt="">
                     <div class="menu-content">
-                        <a href="#">{{$product->title}}</a><span>{{$product->price}}</span>
+                        <a href="#">title</a><span>price</span>
                     </div>
                     <div class="menu-ingredients">
-                        {{$product->description}}
+                            discribtion
                     </div>
                 </div>
-                    @endforeach
+
                 </section>
 
             </div>

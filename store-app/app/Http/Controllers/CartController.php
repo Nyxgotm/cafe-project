@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class CartController extends Controller
     function index()
     {
         if (Auth::check()){
-            return view('home.cart');
+
         }
         else{
             return  redirect(route('login'));
@@ -23,8 +24,8 @@ class CartController extends Controller
     {
         if (Auth::check()){
 
-            $categories=Category::all();
-            return view('home.cart',compact('product','categories'));
+
+            return view('home.cart');
         }
         else{
             return  redirect(route('login'));

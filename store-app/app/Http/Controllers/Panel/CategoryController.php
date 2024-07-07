@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -22,14 +23,35 @@ class CategoryController extends Controller
 
     function store(Request $request)
     {
+        $errors=[];
+        $data = [];
+        $errors = array_merge($errors,Validator::make($request->all(),[
 
-        Category::create([
-            $path = $request->file('image')->store('public/'),
-            'title' => $request->title,
-            'image' => str_replace('public/', '', $path),
-        ]);
-        return redirect('/categories');
+            'title'=>['required','max:255'],
+            'image'=>'required'
+
+        ],[
+
+            'title.required' =>'Entering the title is mandatory',
+            'title.unique' =>'Your selected title is duplicate',
+            'title.max' =>'The entered title cannot be more than 255 characters',
+            'image.required' =>'Entering the image is mandatory',
+
+        ])->errors()->all());
+
+
+        if (empty($errors)){
+            if (Category::create([
+                $path = $request->file('image')->store('public/'),
+                'title' => $request->title,
+                'image' => str_replace('public/', '', $path),
+            ])){
+                $data ='Data was successfully recorded';
+            }
+        }
+        return redirect('/categories')->with(['data'=>$data,'errors'=>$errors]);
     }
+
 
     function destroy(Category $category)
     {
