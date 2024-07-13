@@ -41,15 +41,18 @@ class CategoryController extends Controller
 
 
         if (empty($errors)){
-            if (Category::create([
+           (Category::create([
                 $path = $request->file('image')->store('public/'),
                 'title' => $request->title,
                 'image' => str_replace('public/', '', $path),
-            ])){
-                $data ='Data was successfully recorded';
-            }
+                $data ='Data was successfully recorded'
+            ]));
+
+
         }
-        return redirect('/categories')->with(['data'=>$data,'errors'=>$errors]);
+        return redirect("/categories")
+            ->with('data',$data)
+            ->with('errors',$errors);
     }
 
 

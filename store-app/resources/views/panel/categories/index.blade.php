@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html>
 <html lang="en">
 
 <head>
@@ -103,12 +103,14 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             @endforeach
-                            @else
+                        @else
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <i class="bi bi-check-circle me-1"></i>
-                                {{$data}}
+                                    {{$data}}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
+
+
                         @endif
 
     <!-- Table with hoverable rows -->

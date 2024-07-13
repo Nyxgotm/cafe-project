@@ -13,7 +13,8 @@ class CartController extends Controller
     function index()
     {
         if (Auth::check()){
-
+            $products = Product::all();
+            return view('home.cart', compact('products'));
         }
         else{
             return  redirect(route('login'));

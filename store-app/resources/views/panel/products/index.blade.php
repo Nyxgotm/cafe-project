@@ -95,6 +95,21 @@
             <div>
                 <div class="card">
                     <div class="card-body">
+                        @if(!empty($errors))
+                            @foreach($errors as $error)
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <i class="bi bi-exclamation-octagon me-1"></i>
+                                    {{$error}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <i class="bi bi-check-circle me-1"></i>
+                                {{$data}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
                         <!-- Table with hoverable rows -->
                         <table class="table table-hover">
                             <thead>

@@ -1,4 +1,4 @@
-@php use Illuminate\Support\Facades\Auth; @endphp
+ @php use Illuminate\Support\Facades\Auth; @endphp
     <!DOCTYPE html>
 <html lang="en">
 
@@ -77,11 +77,12 @@
                     <button ><a class="nav-link scrollto" >Logout</a></button>
                 </form>
 
-                @foreach($users as $user)
+
                 @if(Auth::check() && Auth::user()->role=='admin')
-                    <li><a class="nav-link scrollto" href="{{ route('categories') }}">Panel</a></li>
+                    <li><a class="nav-link scrollto" href="{{ route('categories') }}">New Caregories</a></li>
+                        <li><a class="nav-link scrollto" href="{{ route('products') }}">New products</a></li>
                 @endif
-                @endforeach
+
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -149,7 +150,7 @@
             <div class="col-lg-6 menu-item filter-starters">
                 <img src="{{asset('storage/'.$product->image)}}" class="menu-img" alt="">
                 <div class="menu-content">
-                    <a href="{{route('add.cart',$product->product_id)}}">{{$product->title}}</a><span>{{$product->price}}</span>
+                    <a href="{{route('cart',$product->product_id)}}">{{$product->title}}</a><span>{{$product->price}}</span>
                 </div>
                 <div class="menu-ingredients">
                     {{$product->description}}

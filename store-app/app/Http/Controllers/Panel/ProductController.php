@@ -25,38 +25,35 @@ class ProductController extends Controller
 
     function store(Request $request)
     {
-        $errors=[];
-        $errors = array_merge($errors, Validator::make($request->all(),[
-            'title'=>['required','max:255'],
-            'category_d'=>'required',
-            'image'=>'required',
-            'price'=>'required',
-            'description'=>'required'
+        $errors = [];
+        $errors = array_merge($errors, Validator::make($request->all(), [
+            'title' => ['required', 'max:255'],
+            'image' => 'required',
+            'price' => 'required',
+            'description' => 'required'
 
-        ],[
-            'title.required'=>'Entering the title is mandatory',
-            'title.max'=>'The entered title cannot be more than 255 characters',
-            'category_id.required'=>'Entering the category is mandatory',
-            'image.required'=>'Entering the image is mandatory',
-            'price.required'=>'Entering the price is mandatory',
-            'description.required'=>'Entering the description is mandatory',
+        ], [
+            'title.required' => 'Entering the title is mandatory',
+            'title.max' => 'The entered title cannot be more than 255 characters',
+            'image.required' => 'Entering the image is mandatory',
+            'price.required' => 'Entering the price is mandatory',
+            'description.required' => 'Entering the description is mandatory',
 
-        ])->errors()->jsonSerialize());
+        ])->errors()->all());;
 
-        if (empty($errors)){
+        if (empty($errors)) {
             Product::create([
                 $path = $request->file('image')->store('public/'),
                 'title' => $request->title,
-                'category_id'=>$request->category,
+                'category_id' => $request->category,
                 'image' => str_replace('public/', '', $path),
-                'price'=>$request->price,
-                'description'=>$request->description
+                'price' => $request->price,
+                'description' => $request->description
             ]);
             return redirect('/products');
         }
-        else{
-            return $errors;
-        }
+        return redirect("/products")
+            ->with('errors',$errors);
 
     }
 
