@@ -25,8 +25,7 @@ class CartController extends Controller
     {
         if (Auth::check()){
 
-
-            return view('home.cart');
+            
         }
         else{
             return  redirect(route('login'));

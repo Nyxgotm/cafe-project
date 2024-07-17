@@ -86,6 +86,13 @@
             </a>
         </li><!-- End Contact Page Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('home')}}">
+
+                <span>Back to Home</span>
+            </a>
+        </li><!-- End Contact Page Nav -->
+
     </ul>
 
 </aside><!-- End Sidebar-->

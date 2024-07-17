@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['web','auth','role:admin'])->group(function (){
     //Start Category Route
 
-    Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories')->middleware('admin');
 
     Route::get('/create', [CategoryController::class,'create'])->name('create');
 
