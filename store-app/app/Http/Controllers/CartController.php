@@ -24,8 +24,18 @@ class CartController extends Controller
     function create(Product $product)
     {
         if (Auth::check()){
+            $user_id = Auth::id();
+            $cart=Cart::where('user_id', $user_id)->first();
+            if (isset($cart)){
 
-            
+            }
+            else{
+                $cart=new Cart();
+                $cart->user_id = Auth::id();
+                $cart->save();
+
+            }
+
         }
         else{
             return  redirect(route('login'));
