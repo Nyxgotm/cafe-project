@@ -1,4 +1,4 @@
- @php use Illuminate\Support\Facades\Auth; @endphp
+{{-- @php use Illuminate\Support\Facades\Auth; @endphp--}}
     <!DOCTYPE html>
 <html lang="en">
 
@@ -71,7 +71,7 @@
 
                 <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                 <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
-                <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>
+{{--                <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>--}}
                 <form method="post" action="{{ route('logout') }}">
                     @csrf
                     <button ><a class="nav-link scrollto" >Logout</a></button>
@@ -150,7 +150,7 @@
             <div class="col-lg-6 menu-item filter-starters">
                 <img src="{{asset('storage/'.$product->image)}}" class="menu-img" alt="">
                 <div class="menu-content">
-                    <a href="{{route('cart',$product->product_id)}}">{{$product->title}}</a><span>{{$product->price}}</span>
+                    <a href="{{route('add.cart',$product->product_id)}}">{{$product->title}}</a><span>{{$product->price}}</span>
                 </div>
                 <div class="menu-ingredients">
                     {{$product->description}}

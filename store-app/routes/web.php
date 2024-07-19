@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['web','auth','role:admin'])->group(function (){
     //Start Category Route
 
-    Route::get('/categories', [CategoryController::class, 'index'])->name('categories')->middleware('admin');
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 
     Route::get('/create', [CategoryController::class,'create'])->name('create');
 
@@ -70,5 +70,5 @@ Auth::routes();
 //start cart Route
 Route::get('/cart',[CartController::class,'index'])->name('cart');
 
-Route::get('/cart/{product}',[CartController::class,'create'])->name('add.cart');
+Route::get('/cart/add/{product}',[CartController::class,'create'])->name('add.cart');
 //End cart Route

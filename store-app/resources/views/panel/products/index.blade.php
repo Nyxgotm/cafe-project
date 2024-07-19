@@ -141,7 +141,7 @@
                                     <td>{{$product->price}}</td>
                                     <td><img src="{{asset('storage/'.$product->image)}}"></td>
                                     <td>{{$product->description}}</td>
-                                    <td>{{$product->category->title}}</td>
+                                    <td>{{$product->category->title??null}}</td>
                                     <td><a href="{{route('products.delete',$product->product_id)}}">Delete</a></td>
                                     <td><a href="{{route('products.edit',$product->product_id)}}">Update</a></td>
                                 </tr>
