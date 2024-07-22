@@ -17,38 +17,42 @@ class CartController extends Controller
     }
     function create(Product $product)
     {
-        dd($product);
+
         if (Auth::check()) {
             $user_id = Auth::id();
-            $cart = Cart::where('user_id', $user_id)->first();
+            $cart = Cart::where('user_id' , $user_id)->first();
+
             if (isset($cart)) {
 
                 $cart_id = $cart->cart_id;
-
                 $cart_item = Cart_Item::where(['cart_id' => $cart_id, 'product_id' => $product]);
+
                 if (isset($cart_item)) {
 
+                    $cart_item ->increment('quantity');
+                    $cart_item ->update();
 
                 }
                 else {
                     $cart_item = Cart_Item::create([
+                        $path = $product->file('image')->store('public/'),
                         'cart|_id' => $cart_id,
-                        'product_id' => $product->product_id
+                        'product_id' => $product->product_id,
+                        'quantity' => 1,
+                        'title' => $product->title,
+                        'price'=>$product->price,
+                        'image' => str_replace('public/', '', $path),
+                        'description'=>$product->description
+
                     ]);
 
                 }
             }
-//            else {
-//                $cart = Cart::create([
-//                    'user_id' => $user_id,
-//                ]);
-//            } else{
-//                $cart=new Cart();
-//                $cart->user_id = Auth::id();
-//                $cart->save();
-//
-//
-//            }
+           else {
+//               $cart = Cart::create([
+//                    'user_id' => $user_id ,
+//               ]);
+           }
 
         }
         else{

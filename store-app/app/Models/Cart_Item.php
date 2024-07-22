@@ -30,7 +30,7 @@ class Cart_Item extends Model
             $model->cart_item_id = Str::uuid()->toString();
         });
     }
-    public function carts(){
-        return $this->hasMany(Cart::class, 'cart_item_id', 'cart_item_id');
+    public function cart(){
+        return $this->belongsTo(Cart::class, 'cart_id', 'cart_id');
     }
 }

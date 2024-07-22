@@ -71,7 +71,7 @@
 
                 <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                 <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
-{{--                <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>--}}
+               <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>
                 <form method="post" action="{{ route('logout') }}">
                     @csrf
                     <button ><a class="nav-link scrollto" >Logout</a></button>
