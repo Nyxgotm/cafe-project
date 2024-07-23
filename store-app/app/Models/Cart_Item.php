@@ -19,7 +19,9 @@ class Cart_Item extends Model
     protected $primaryKey = 'cart_item_id';
 
     protected $fillable = [
-        'quantity'
+        'product_id',
+        'quantity',
+        'cart_id'
     ];
 
     public static function boot()

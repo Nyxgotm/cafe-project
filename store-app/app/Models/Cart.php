@@ -10,10 +10,14 @@ use Illuminate\Support\Str;
 class Cart extends Model
 {
     use HasFactory;
-    protected $table='products';
+    protected $table='carts';
     protected $keyType = 'string';
     public $incrementing = false;
     protected $primaryKey = 'cart_id';
+
+    protected $fillable =[
+        'user_id'
+    ];
 
     public static function boot() {
         parent::boot();
