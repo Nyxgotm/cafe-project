@@ -90,15 +90,35 @@
                 <section id="menu" class="menu">
 
                 <div class="container" data-aos="fade-up">
-                    <img src="image" class="menu-img" alt="">
+                    <div class="col-12">
+                        <div class="card top-selling overflow-auto">
+                                <table >
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Preview</th>
+                                        <th scope="col">Product</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Price</th>
 
-                    <div class="menu-content">
-                        <a href="#">title</a><span>price</span>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><img src="assets/img/product-1.jpg" class="menu-img" alt=""></td>
+                                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
+                                        <td>$64</td>
+                                        <td class="fw-bold">124</td>
+                                        <td>$5,828</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="menu-ingredients">
-                        description
-                    </div>
-                </div>
+
 
                 </section>
 

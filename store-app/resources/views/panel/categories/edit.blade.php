@@ -89,6 +89,7 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{route('home')}}">
+                <i class="bi bi-backspace"></i>
                 <span>Back to Home</span>
             </a>
         </li><!-- End Contact Page Nav -->

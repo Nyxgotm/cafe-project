@@ -26,47 +26,40 @@ class CartController extends Controller
             if ($cart) {
 
                 $cart_id = $cart->cart_id;
-                $cart_item = Cart_Item::where(['cart_id' => $cart_id, 'product_id' => $product]);
+                $product_id = $product->product_id;
+                $cart_item =Cart_Item::where(['cart_id' => $cart_id, 'product_id' => $product_id])->first();
 
-                if (isset($cart_item)) {
+                if($cart_item) {
 
-                    $cart_item ->increment('quantity');
-                    $cart_item ->update();
+
+                    $cart_item->increment('quantity');
+
+                    return redirect('/cart');
 
                 }
                 else {
-                    $cart_item = Cart_Item::create([
-                        $path = $product->file('image')->store('public/'),
-                        'cart|_id' => $cart_id,
+                         Cart_Item::create([
+                        'cart_id' => $cart_id,
                         'product_id' => $product->product_id,
                         'quantity' => 1,
-                        'title' => $product->title,
-                        'price'=>$product->price,
-                        'image' => str_replace('public/', '', $path),
-                        'description'=>$product->description
-
                     ]);
+                    return redirect('/cart');
 
                 }
             }
            else {
-              $cart = Cart::create([
+
+                if ($cart = Cart::create([
                     'user_id' => $user_id ,
-              ]);
-                if ($cart){
+                ]))
+                {
+                    $cart_id = $cart->cart_id;
+                         Cart_Item::create([
+                        'cart_id' => $cart_id,
+                        'product_id' => $product->product_id,
+                        'quantity' => 1,
+                    ]);
 
-                $cart_id = $cart->cart_id;
-
-
-                $cart_item = Cart_Item::create([
-                    $path = $product->file('image')->store('public/'),
-                    'cart|_id' => $cart_id,
-                    'product_id' => $product->product_id,
-                    'quantity' => 1,
-                    'title' => $product->title,
-                    'price'=>$product->price,
-                    'image' => str_replace('public/', '', $path),
-                    'description'=>$product->description]);
                 return redirect('/cart');
 
                 }
