@@ -31,8 +31,13 @@ class User extends Authenticatable
         static::creating(function ($model){
             $model->user_id =Str::uuid()->toString();
         });
-
     }
+    public function cart()
+    {
+            return $this->hasOne(Cart::class,'user_id','user_id');
+    }
+
+
     /**
      * The attributes that should be hidden for arrays.
      *

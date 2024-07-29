@@ -13,21 +13,29 @@ class CartController extends Controller
 {
     function index()
     {
-        $user_id =Auth::id();
+        if (Auth::check()){
+            $user = Auth::user();
+            $cart = $user->cart;
+            $data = Cart_Item::where('cart_id',$cart->cart_id)->get();
 
-        $cartitems=Cart_Item::with('product')->where('user_id',$user_id)->get();
 
-        $transformcartitem=$cartitems->transform(function ($cartitem, $key) {
-           return[
-               'title'=>$cartitem->product->title,
-               'price'=>$cartitem->product->price,
-               'image'=>$cartitem->product->image,
-               'quantity'=>$cartitem->quantity,
-               'total_price'=> $cartitem->product->price * $cartitem->quantity,
-           ];
-        });
+            $cartitems = $data->transform(function ($item) {
+               return[
+                   'title'=>$item->product->title,
+                   'price'=>$item->product->price,
+                   'category'=>$item->product->category,
+                   'description'=>$item->product->description,
+                   'image'=>$item->product->image,
+                   'quantity'=>$item->quantity,
+                   'total_price'=> $item->product->price * $item->quantity,
+               ];
+            });
+                return view('home.cart' , compact('cartitems'));
+        }
+        else{
+        return  redirect(route('login'));
 
-        return view('home.cart' , compact('transformcartitem'));
+    }
     }
     function create(Product $product)
     {

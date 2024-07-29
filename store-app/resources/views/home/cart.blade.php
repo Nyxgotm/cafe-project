@@ -97,20 +97,26 @@
                                     <tr>
                                         <th scope="col">Preview</th>
                                         <th scope="col">Product</th>
+                                        <th scope="col">Category</th>
                                         <th scope="col">Description</th>
                                         <th scope="col">Quantity</th>
                                         <th scope="col">Price</th>
+                                        <th scope="col">Total Price</th>
 
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($cartitems as $item)
                                     <tr>
-                                        <td><img src="assets/img/product-1.jpg" class="menu-img" alt=""></td>
-                                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                                        <td>$64</td>
-                                        <td class="fw-bold">124</td>
-                                        <td>$5,828</td>
+                                        <td><img src="{{$item->image}}" class="menu-img" alt=""></td>
+                                        <td><a href="#" class="text-primary fw-bold">{{$item->title}}</a></td>
+                                        <td>{{$item->category}}</td>
+                                        <td>{{$item->description}}</td>
+                                        <td>{{$item->quantity}}</td>
+                                        <td>{{$item->price}}</td>
+                                        <td>{{$item->total_price}}</td>
                                     </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
 
