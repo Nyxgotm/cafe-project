@@ -15,11 +15,10 @@ class CartController extends Controller
     {
         if (Auth::check()){
             $user = Auth::user();
-            $cart = $user->cart;
-            $data = Cart_Item::where('cart_id',$cart->cart_id)->get();
+            $cart = $user->cart->cart_id;
+            $data = Cart_Item::with('cart')->where('cart_id',$cart)->get();
 
-
-            $cartitems = $data->transform(function ($item) {
+           $cartitems= $data->transform(function ($item) {
                return[
                    'title'=>$item->product->title,
                    'price'=>$item->product->price,
@@ -30,7 +29,9 @@ class CartController extends Controller
                    'total_price'=> $item->product->price * $item->quantity,
                ];
             });
-                return view('home.cart' , compact('cartitems'));
+
+
+                return view('home.cart', compact('cartitems'));
         }
         else{
         return  redirect(route('login'));
