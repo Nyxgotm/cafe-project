@@ -15,14 +15,16 @@ class CartController extends Controller
     {
         if (Auth::check()){
             $user = Auth::user();
-            $cart = $user->cart->cart_id;
-            $data = Cart_Item::with('cart')->where('cart_id',$cart)->get();
+            $cart = $user->cart;
+            $data = Cart_Item::where('cart_id',$cart->cart_id)->get();
 
            $cartitems= $data->transform(function ($item) {
                return[
+                   'cart_item_id'=>$item->cart_item_id,
+                   'product_id'=>$item->product->product_id,
                    'title'=>$item->product->title,
                    'price'=>$item->product->price,
-                   'category'=>$item->product->category,
+                   'category'=>$item->product->category->title,
                    'description'=>$item->product->description,
                    'image'=>$item->product->image,
                    'quantity'=>$item->quantity,
@@ -96,5 +98,28 @@ class CartController extends Controller
             return  redirect(route('login'));
 
         }
+    }
+    function destroy(Cart_Item $item){
+
+        $quantity =$item->quantity;
+
+            if ($quantity==1){
+
+                $item->delete();
+            }
+            else{
+                $item->decrement('quantity',1);
+            }
+
+        return redirect('/cart');
+
+    }
+    function update(Cart_Item $item){
+
+        $item->increment('quantity');
+
+        return redirect('/cart');
+
+
     }
 }

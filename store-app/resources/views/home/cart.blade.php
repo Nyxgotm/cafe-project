@@ -88,42 +88,26 @@
         <div class="row">
             <div class="col-lg-8">
                 <section id="menu" class="menu">
+                    <div   data-aos-delay="200">
 
-                <div class="container" data-aos="fade-up">
-                    <div class="col-12">
-                        <div class="card top-selling overflow-auto">
-                                <table >
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Preview</th>
-                                        <th scope="col">Product</th>
-                                        <th scope="col">Category</th>
-                                        <th scope="col">Description</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Total Price</th>
-
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($cartitems as $item)
-                                    <tr>
-                                        <td><img src="{{$item->image}}" class="menu-img" alt=""></td>
-                                        <td><a href="#" class="text-primary fw-bold">{{$item->title}}</a></td>
-                                        <td>{{$item->category}}</td>
-                                        <td>{{$item->description}}</td>
-                                        <td>{{$item->quantity}}</td>
-                                        <td>{{$item->price}}</td>
-                                        <td>{{$item->total_price}}</td>
-                                    </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-                        </div>
+                            @foreach($cartitems as $item)
+                                <div class="col-lg-6 menu-item filter-starters">
+                                    <img src="{{asset('storage/'.$item['image'])}}" class="menu-img" alt="">
+                                    <div class="menu-content">
+                                        <a>{{$item['title']}}</a><a href="{{route('decrease.item',$item['cart_item_id'])}}">-</a><span>{{$item['price']}}</span><a href="{{route('increase.item',$item['cart_item_id'])}}">+</a>
+                                    </div>
+                                    <div class="menu-ingredients">
+                                        {{$item['description']}}
+                                    </div>
+                                    <p>
+                                      Total Price:  {{$item['total_price']}}
+                                    </p>
+                                </div>
+                            @endforeach
                     </div>
+
+
+
 
 
                 </section>

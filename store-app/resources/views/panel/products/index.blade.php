@@ -159,7 +159,6 @@
     </div>
 </main><!-- End #main -->
 </body>
-</html>
 
 
 <!-- Vendor JS Files -->

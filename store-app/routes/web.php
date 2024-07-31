@@ -71,4 +71,8 @@ Auth::routes();
 Route::get('/cart',[CartController::class,'index'])->name('cart');
 
 Route::get('/cart/add/{product}',[CartController::class,'create'])->name('add.cart');
+
+Route::get('/cart/decrease/{item}',[CartController::class,'destroy'])->name('decrease.item');
+
+Route::get('/cart/increase/{item}',[CartController::class,'update'])->name('increase.item');
 //End cart Route
