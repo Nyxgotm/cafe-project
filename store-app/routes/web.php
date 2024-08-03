@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
@@ -76,3 +77,9 @@ Route::get('/cart/decrease/{item}',[CartController::class,'destroy'])->name('dec
 
 Route::get('/cart/increase/{item}',[CartController::class,'update'])->name('increase.item');
 //End cart Route
+
+//Start Article Route
+Route::get('/article',[ArticleController::class,'index'])->name('article');
+
+Route::get('/article/create',[ArticleController::class,'create'])->name('article.create');
+//End Article Route

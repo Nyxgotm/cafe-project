@@ -1,4 +1,3 @@
-<html>
 <html lang="en">
 
 <head>
@@ -85,6 +84,13 @@
                 <span>Products</span>
             </a>
         </li><!-- End Contact Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('article')}}">
+                <i class="bi bi-card-list"></i>
+                <span>Article</span>
+            </a>
+        </li><!-- End Article Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{route('home')}}">

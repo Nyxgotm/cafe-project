@@ -73,18 +73,25 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href="index.html">
+            <a class="nav-link " href="{{route('categories')}}">
                 <i class="bi bi-grid"></i>
                 <span>Categories</span>
             </a>
-        </li><!-- End Dashboard Nav -->
+        </li><!-- End Category Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-contact.html">
+            <a class="nav-link collapsed" href="{{route('products')}}">
                 <i class="bi bi-envelope"></i>
                 <span>Products</span>
             </a>
-        </li><!-- End Contact Page Nav -->
+        </li><!-- End Product Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('article')}}">
+                <i class="bi bi-card-list"></i>
+                <span>Article</span>
+            </a>
+        </li><!-- End Article Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{route('home')}}">

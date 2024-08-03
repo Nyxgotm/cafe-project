@@ -88,6 +88,13 @@
         </li><!-- End Contact Page Nav -->
 
         <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('article')}}">
+                <i class="bi bi-card-list"></i>
+                <span>Article</span>
+            </a>
+        </li><!-- End Article Nav -->
+
+        <li class="nav-item">
             <a class="nav-link collapsed" href="{{route('home')}}">
                 <i class="bi bi-backspace"></i>
                 <span>Back to Home</span>

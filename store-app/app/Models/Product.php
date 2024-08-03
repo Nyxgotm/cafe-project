@@ -25,7 +25,8 @@ class Product extends Model
 
     ];
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
 
         static::creating(function ($model) {
