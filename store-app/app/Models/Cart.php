@@ -10,13 +10,15 @@ use Illuminate\Support\Str;
 class Cart extends Model
 {
     use HasFactory;
+
     protected $table='carts';
     protected $keyType = 'string';
     public $incrementing = false;
     protected $primaryKey = 'cart_id';
 
     protected $fillable =[
-        'cart_id', 'user_id'
+        'cart_id',
+        'user_id'
     ];
 
     public static function boot() {

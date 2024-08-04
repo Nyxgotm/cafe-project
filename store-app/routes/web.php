@@ -61,7 +61,9 @@ Route::middleware(['web','auth','role:admin'])->group(function (){
 //start home Route
 
 Route::get('/',[HomeController::class,'index'])->name('home');
+
 Route::get('/home',[HomeController::class,'index'])->name('home');
+
 //End home Route
 
 
@@ -69,6 +71,7 @@ Route::get('/home',[HomeController::class,'index'])->name('home');
 Auth::routes();
 
 //start cart Route
+
 Route::get('/cart',[CartController::class,'index'])->name('cart');
 
 Route::get('/cart/add/{product}',[CartController::class,'create'])->name('add.cart');
@@ -76,10 +79,23 @@ Route::get('/cart/add/{product}',[CartController::class,'create'])->name('add.ca
 Route::get('/cart/decrease/{item}',[CartController::class,'destroy'])->name('decrease.item');
 
 Route::get('/cart/increase/{item}',[CartController::class,'update'])->name('increase.item');
+
 //End cart Route
 
 //Start Article Route
+
 Route::get('/article',[ArticleController::class,'index'])->name('article');
 
 Route::get('/article/create',[ArticleController::class,'create'])->name('article.create');
+
+Route::post('/article/store',[ArticleController::class,'store'])->name('article.store');
+
+Route::get('/article/delete/{article}',[ArticleController::class,'delete'])->name('article.delete');
+
+Route::get('article/edit/{article}',[ArticleController::class,'edit'])->name('article.edit');
+
+Route::post('article/update/{article}',[ArticleController::class,'update'])->name('article.update');
+
+Route::get('article/show/{article}',[ArticleController::class,'show'])->name('article.show');
+
 //End Article Route

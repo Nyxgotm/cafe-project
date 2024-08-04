@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Str; @endphp
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -13,7 +14,9 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -108,22 +111,26 @@
             <div>
                 <div class="card">
                     <div class="card-body">
-
-
+                        @if(!empty($errors))
+                            @foreach($errors as $error)
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <i class="bi bi-exclamation-octagon me-1"></i>
-
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    {{$error}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
                                 </div>
-
-
+                            @endforeach
+                        @else
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <i class="bi bi-check-circle me-1"></i>
-
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                {{$data}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
                             </div>
 
+                        @endif
                         <!-- Table with hoverable rows -->
+
                         <table class="table table-hover">
                             <thead>
                             <tr>
@@ -137,33 +144,34 @@
 
                             </tr>
                             </thead>
+
                             <tbody>
 
-
+                            @foreach($articles as $article)
                                 <tr>
-                                    <th></th>
-                                    <td></td>
-                                    <td><img ></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td><a>Delete</a></td>
-                                    <td><a>Update</a></td>
+                                    <th>{{$article->article_id}}</th>
+                                    <td>{{$article->title}}</td>
+                                    <td><img src="{{asset('storage/'.$article->image)}}"></td>
+                                    <td>{!!Str::limit($article->description, 60 ,'...')!!}</td>
+                                    <td>{{$article->view}}</td>
+                                    <td><a href="{{route('article.delete',$article->article_id)}}">Delete</a></td>
+                                    <td><a href="{{route('article.edit',$article->article_id)}}">Update</a></td>
                                 </tr>
 
-
+                            @endforeach
                         </table>
                         <!-- End Table with hoverable rows -->
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <div class="d-grid gap-2 mt-3">
-        <button class="btn btn-primary" type="button" >  <a href="{{route('create.products')}}" style="color: aliceblue" >+ Create</a></button>
+        <button class="btn btn-primary" type="button"><a href="{{route('article.create')}}" style="color: aliceblue">+
+                Create</a></button>
     </div>
 </main><!-- End #main -->
-
-
 
 
 </body>
