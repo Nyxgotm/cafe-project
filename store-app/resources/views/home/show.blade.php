@@ -1,8 +1,4 @@
-@php use Illuminate\Support\Str; @endphp
-
-
-{{-- @php use Illuminate\Support\Facades\Auth; @endphp--}}
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -72,124 +68,37 @@
         <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
 
-                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
-                <li><a class="nav-link scrollto" href="#specials">Article</a></li>
+                <li><a class="nav-link scrollto active" href="{{route('home')}}">Home</a></li>
                 <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>
                 <form method="post" action="{{ route('logout') }}">
                     @csrf
                     <button><a class="nav-link scrollto">Logout</a></button>
                 </form>
 
-
-                @if(Auth::check() && Auth::user()->role=='admin')
-                    <li><a class="nav-link scrollto" href="{{ route('categories') }}">New Caregories</a></li>
-                    <li><a class="nav-link scrollto" href="{{ route('products') }}">New Products</a></li>
-                    <li><a class="nav-link scrollto" href="{{ route('article') }}">New Article</a></li>
-                @endif
-
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
-
-        <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="get" action="{{route('home')}}">
-                <input type="text" name="search" placeholder="Search" title="Enter search keyword">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-            </form>
-        </div><!-- End Search Bar -->
-
-        <a href="{{route('cart')}}" class="book-a-table-btn scrollto d-none d-lg-flex">Cart</a>
-
     </div>
 </header><!-- End Header -->
-
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
         <div class="row">
             <div class="col-lg-8">
-                <h1>Welcome to <span>Cafe Baran</span></h1>
-                <h2>Delivering great coffee for more than 18 years!</h2>
-
-                <div class="btns">
-                    <a href="#menu" class="btn-menu animated fadeInUp scrollto">Our Menu</a>
-                    <a href="{{route('cart')}}" class="btn-book animated fadeInUp scrollto">Cart</a>
-                </div>
+                <img src="{{asset('storage/'.$article->image)}}" class="menu-img" alt="">
+                <h1>{{$article->title}}</h1>
             </div>
-
         </div>
     </div>
 </section><!-- End Hero -->
-
-<!-- ======= Menu Section ======= -->
-<section id="menu" class="menu section-bg">
-    <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-            <h2>Menu</h2>
-            <p>Check Our Tasty Menu</p>
-        </div>
-
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-            <div class="col-lg-12 d-flex ">
-                <ul class="menu-flters">
-
-
-                    <a href="{{route('home')}}">
-                        <li class="filter-active">All</li>
-                    </a>
-                    @foreach($categories as $category)
-                        <a href='{{route('home',['category' => $category->category_id])}}'>
-                            <li>{{$category->title}}</li>
-                        </a>
-                    @endforeach
-                </ul>
+<div class="events-slider swiper" data-aos="fade-up" data-aos-delay="100">
+    <div class="swiper-wrapper">
+            <div class="row event-item">
+                <h4>{{$article->description}}</h4>
             </div>
-        </div>
     </div>
-    <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
 
-        @foreach($products as $product)
-            <div class="col-lg-6 menu-item filter-starters">
-                <img src="{{asset('storage/'.$product->image)}}" class="menu-img" alt="">
-                <div class="menu-content">
-                    <a href="{{route('add.cart',$product->product_id)}}">{{$product->title}}</a><span>{{$product->price}}</span>
-                </div>
-                <div class="menu-ingredients">
-                    {{$product->description}}
-                </div>
-            </div>
-        @endforeach
-
-
-    </div>
-</section><!-- End Menu Section -->
-<!-- ======= Specials Section ======= -->
-<section id="specials" class="specials">
-    <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-            <h2>Article</h2>
-            <p>Check Our Articles</p>
-        </div>
-        @foreach($articles as $article)
-            <div class="row" data-aos="fade-up" data-aos-delay="100">
-                <div class="col-lg-3">
-                    <ul class="nav nav-tabs flex-column">
-                        <li class="nav-item">
-                            <img src="{{asset('storage/'.$article->image)}}" class="menu-img" alt="">
-                            View:<span>{{$article->view}}</span><a class="nav-link active show"  href="{{route('article.show',$article->article_id)}}">{{$article->title}}</a>
-                            <p>{!!Str::limit($article->description, 60 ,'...')!!}</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        @endforeach
-
-    </div>
-</section><!-- End Specials Section -->
+</div>
 
 </body>
 <!-- Vendor JS Files -->
@@ -202,6 +111,5 @@
 
 <!-- Template Main JS File -->
 <script src="/assets(1)/assets/js/main.js"></script>
-
 
 </html>

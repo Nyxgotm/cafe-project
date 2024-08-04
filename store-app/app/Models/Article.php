@@ -13,10 +13,9 @@ class Article extends Model
     protected $table ='articles';
     protected $keyType = 'string';
     public $incrementing = false;
-    protected $primaryKey = 'product_id';
+    protected $primaryKey = 'article_id';
 
     protected $fillable = [
-        'article_id',
         'title',
         'description',
         'image',

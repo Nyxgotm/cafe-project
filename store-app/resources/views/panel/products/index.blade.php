@@ -109,30 +109,31 @@
             <div>
                 <div class="card">
                     <div class="card-body">
-
-
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <i class="bi bi-exclamation-octagon me-1"></i>
-
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-
-
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <i class="bi bi-check-circle me-1"></i>
-
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-
+                        @if(!empty($errors))
+                            @foreach($errors as $error)
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <i class="bi bi-exclamation-octagon me-1"></i>
+                                    {{$error}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <i class="bi bi-check-circle me-1"></i>
+                                {{$data}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
                         <!-- Table with hoverable rows -->
                         <table class="table table-hover">
                             <thead>
                             <tr>
                                 <th scope="col">Row</th>
                                 <th scope="col">Title</th>
+                                <th scope="col">Price</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Description</th>
-                                <th scope="col">Veiw</th>
+                                <th scope="col">Category</th>
                                 <th scope="col">Delete</th>
                                 <th scope="col">Update</th>
 
@@ -140,18 +141,19 @@
                             </thead>
                             <tbody>
 
+                            @foreach($products as $product)
+                                <tr>
+                                    <th>{{$product->product_id}}</th>
+                                    <td>{{$product->title}}</td>
+                                    <td>{{$product->price}}</td>
+                                    <td><img src="{{asset('storage/'.$product->image)}}"></td>
+                                    <td>{{$product->description}}</td>
+                                    <td>{{$product->category->title??null}}</td>
+                                    <td><a href="{{route('products.delete',$product->product_id)}}">Delete</a></td>
+                                    <td><a href="{{route('products.edit',$product->product_id)}}">Update</a></td>
+                                </tr>
 
-                            <tr>
-                                <th></th>
-                                <td></td>
-                                <td><img ></td>
-                                <td></td>
-                                <td></td>
-                                <td><a>Delete</a></td>
-                                <td><a>Update</a></td>
-                            </tr>
-
-
+                            @endforeach
                         </table>
                         <!-- End Table with hoverable rows -->
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Category;
@@ -13,6 +14,7 @@ class HomeController extends Controller
     function index(){
 
         $categories = Category::all();
+        $articles = Article::all();
         $users=User::all();
         $products = Product::query();
         if (request("category")){
@@ -24,7 +26,7 @@ class HomeController extends Controller
         }
         $products=$products->get();
 
-        return view('home.index', compact('categories','products','users'));
+        return view('home.index', compact('categories','products','users','articles'));
 
     }
 }
