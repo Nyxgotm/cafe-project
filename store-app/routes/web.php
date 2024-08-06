@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Panel\CategoryController;
 use App\Http\Controllers\Panel\ProductController;
@@ -99,3 +100,10 @@ Route::post('article/update/{article}',[ArticleController::class,'update'])->nam
 Route::get('article/show/{article}',[ArticleController::class,'show'])->name('article.show');
 
 //End Article Route
+//Start Coupon Route
+
+Route::get('/coupon',[CouponController::class,'index'])->name('coupon');
+
+Route::get('/coupon/create',[CouponController::class,'create'])->name('coupon.create');
+
+//End Coupon Route

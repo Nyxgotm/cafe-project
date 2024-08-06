@@ -16,9 +16,9 @@ class CreateCouponsTable extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->string('coupon_id')->unique();
             $table->string('title')->unique();
-            $table->timestamps('expire_date');
             $table->enum('type',['category','user']);
-            $table->integer('amount');
+            $table->integer('amount')->nullable();
+            $table->timestamp('expire_date');
             $table->timestamps();
         });
     }

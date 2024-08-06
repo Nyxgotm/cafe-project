@@ -93,6 +93,13 @@
             </a>
         </li><!-- End Article Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('coupon')}}">
+                <i class="bi bi-question-circle"></i>
+                <span>Coupon</span>
+            </a>
+        </li><!-- End Coupon Page Nav -->
+
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{route('home')}}">

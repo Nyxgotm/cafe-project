@@ -1,4 +1,6 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -85,30 +87,29 @@
         </li><!-- End Product Nav -->
 
         <li class="nav-item">
-            <a class="nav-link " href="{{route('article')}}">
+            <a class="nav-link collapsed" href="{{route('article')}}">
                 <i class="bi bi-card-list"></i>
                 <span>Article</span>
             </a>
         </li><!-- End Article Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{{route('coupon')}}">
+            <a class="nav-link " href="{{route('coupon')}}">
                 <i class="bi bi-question-circle"></i>
                 <span>Coupon</span>
             </a>
         </li><!-- End Coupon Page Nav -->
 
+
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{route('home')}}">
-                <i class="bi bi-backspace"></i>
                 <span>Back to Home</span>
             </a>
-        </li><!-- End Back Home Nav -->
+        </li><!-- End Contact Page Nav -->
 
     </ul>
 
 </aside><!-- End Sidebar-->
-
 <main id="main" class="main">
     <section class="section">
         <div class="row">
@@ -116,28 +117,42 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Add Article</h5>
+                        <h5 class="card-title">Add Coupons</h5>
                         <!-- General Form Elements -->
-                        <form action="{{route('article.update',$article->article_id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label" >Title</label>
                                 <div class="col-sm-10">
-                                    <input type="text" value="{{$article->title}}" class="form-control" name="title">
+                                    <input type="text" class="form-control" name="title">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputNumber" class="col-sm-2 col-form-label">File</label>
+                                <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" value="{{$article->image}}" type="file" id="formFile" name="image">
+                                    <input type="date" class="form-control">
                                 </div>
                             </div>
+
                             <div class="row mb-3">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">Description</label>
-                                <div class="col-sm-10" >
-                                    <input name="description" value="{{$article->description}}" class="form-control" style="height: 100px">
+                                <label class="col-sm-2 col-form-label">Select</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
                                 </div>
                             </div>
+
+                            <div class="row mb-3">
+                                <label for="inputNumber" class="col-sm-2 col-form-label">Number</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" min="0">
+                                </div>
+                            </div>
+
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Submit</label>
                                 <div class="col-sm-10">
@@ -155,10 +170,6 @@
     </section>
 
 </main>
-
-
-
-
 </body>
 <!-- Vendor JS Files -->
 <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>

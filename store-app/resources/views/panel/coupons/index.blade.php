@@ -1,4 +1,6 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -71,28 +73,28 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link collapsed " href="{{route('categories')}}">
+            <a class="nav-link  collapsed "  href="{{route('categories')}}">
                 <i class="bi bi-grid"></i>
                 <span>Categories</span>
             </a>
-        </li><!-- End Category Nav -->
+        </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{route('products')}}">
                 <i class="bi bi-envelope"></i>
                 <span>Products</span>
             </a>
-        </li><!-- End Product Nav -->
+        </li><!-- End Contact Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link " href="{{route('article')}}">
+            <a class="nav-link collapsed" href="{{route('article')}}">
                 <i class="bi bi-card-list"></i>
                 <span>Article</span>
             </a>
         </li><!-- End Article Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{{route('coupon')}}">
+            <a class="nav-link " href="{{route('coupon')}}">
                 <i class="bi bi-question-circle"></i>
                 <span>Coupon</span>
             </a>
@@ -103,7 +105,7 @@
                 <i class="bi bi-backspace"></i>
                 <span>Back to Home</span>
             </a>
-        </li><!-- End Back Home Nav -->
+        </li><!-- End Contact Page Nav -->
 
     </ul>
 
@@ -112,54 +114,54 @@
 <main id="main" class="main">
     <section class="section">
         <div class="row">
-            <div class="col-lg-6">
-
+            <div>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Add Article</h5>
-                        <!-- General Form Elements -->
-                        <form action="{{route('article.update',$article->article_id)}}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row mb-3">
-                                <label for="inputText" class="col-sm-2 col-form-label" >Title</label>
-                                <div class="col-sm-10">
-                                    <input type="text" value="{{$article->title}}" class="form-control" name="title">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <i class="bi bi-exclamation-octagon me-1"></i>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <i class="bi bi-check-circle me-1"></i>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputNumber" class="col-sm-2 col-form-label">File</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" value="{{$article->image}}" type="file" id="formFile" name="image">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">Description</label>
-                                <div class="col-sm-10" >
-                                    <input name="description" value="{{$article->description}}" class="form-control" style="height: 100px">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Submit</label>
-                                <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Submit Form</button>
-                                </div>
-                            </div>
+                        <!-- Table with hoverable rows -->
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">Row</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Expire_Date</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Delete</th>
 
-                        </form><!-- End General Form Elements -->
+                            </tr>
+                            </thead>
+                            <tbody>
 
+                                <tr>
+                                    <th></th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><a href="">Delete</a></td>
+                                </tr>
+
+                        </table>
+                        <!-- End Table with hoverable rows -->
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
-
-</main>
-
-
-
-
+    <div class="d-grid gap-2 mt-3">
+        <button class="btn btn-primary" type="button" >  <a href="{{route('coupon.create')}}" style="color: aliceblue" >+ Create</a></button>
+    </div>
+</main><!-- End #main -->
 </body>
+
 <!-- Vendor JS Files -->
 <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
 <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -172,4 +174,5 @@
 
 <!-- Template Main JS File -->
 <script src="/assets/js/main.js"></script>
+
 </html>
