@@ -103,6 +103,7 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{route('home')}}">
+                <i class="bi bi-backspace"></i>
                 <span>Back to Home</span>
             </a>
         </li><!-- End Contact Page Nav -->
@@ -119,37 +120,81 @@
                     <div class="card-body">
                         <h5 class="card-title">Add Coupons</h5>
                         <!-- General Form Elements -->
-                        <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('coupon.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
-                                <label for="inputText" class="col-sm-2 col-form-label" >Title</label>
+                                <label for="inputText" class="col-sm-2 col-form-label" >Title:</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="title">
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
-                                <div class="col-sm-10">
-                                    <input type="date" class="form-control">
-                                </div>
-                            </div>
+
+                            <script>
+                                function Myfunction(that){
+                                    if (that.value=="1"){
+
+                                        document.getElementById("value2").style.display = "block";
+
+                                    }
+                                    else{
+
+                                        document.getElementById("value2").style.display = "none";
+
+                                    }
+
+                                }
+                            </script>
+
 
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Select</label>
+                                <label class="col-sm-2 col-form-label">Type:</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" onchange="Myfunction(this)" aria-label="Default select example">
                                         <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option value="0">User</option>
+                                        <option value="1">Category</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <label for="inputNumber" class="col-sm-2 col-form-label">Number</label>
+
+                            <div  id="value2"   style="display: none;" class="row mb-3">
+                                <label class=" col-form-label">Category:</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" min="0">
+
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->category_id}}">{{$category->title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="row mb-3">
+                                <label class=" col-form-label">Amount_Type:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">Percent</option>
+                                        <option value="2">Number</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="row mb-3">
+                                <label for="inputNumber" class=" col-form-label">Amount:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" min="0">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="inputDate" class=" col-form-label">Expire_date:</label>
+                                <div class="col-sm-10">
+                                    <input type="date" class="form-control">
                                 </div>
                             </div>
 
@@ -159,6 +204,8 @@
                                     <button type="submit" class="btn btn-primary">Submit Form</button>
                                 </div>
                             </div>
+
+
 
                         </form><!-- End General Form Elements -->
 

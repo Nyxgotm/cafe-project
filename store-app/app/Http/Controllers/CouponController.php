@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CouponController extends Controller
@@ -13,6 +14,10 @@ class CouponController extends Controller
     }
     function create()
     {
-        return view('panel.coupons.create');
+        $categories = Category::all();
+        return view('panel.coupons.create',compact('categories'));
+    }
+    function store(){
+
     }
 }

@@ -106,4 +106,6 @@ Route::get('/coupon',[CouponController::class,'index'])->name('coupon');
 
 Route::get('/coupon/create',[CouponController::class,'create'])->name('coupon.create');
 
+Route::post('/coupon/store',[CouponController::class,'store'])->name('coupon.store');
+
 //End Coupon Route

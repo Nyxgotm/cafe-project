@@ -17,7 +17,10 @@ class Coupon extends Model
 
     protected $fillable =[
         'title',
+        'category_name',
+        'category_id',
         'expire_date',
+        'amount_type',
         'type',
         'amount'
     ];
@@ -29,5 +32,10 @@ class Coupon extends Model
         static::creating(function ($model){
             $model->coupon_id = Str::uuid()->toString();
         });
+    }
+    public function category(){
+
+        return $this->belongsTo(Category::class, 'category_id', 'category_id');
+
     }
 }

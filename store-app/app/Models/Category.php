@@ -31,4 +31,9 @@ class Category extends Model
     public function products() {
         return $this->hasMany(Product::class, 'category_id', 'category_id');
     }
+
+    public function coupons(){
+
+        return $this->hasMany(Coupon::class,'coupon_id','coupon_id');
+    }
 }
