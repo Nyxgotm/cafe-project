@@ -28,9 +28,9 @@ class ProductController extends Controller
         $errors = [];
         $errors = array_merge($errors, Validator::make($request->all(), [
             'title' => ['required', 'max:255'],
-            'image' => 'required',
-            'price' => 'required',
-            'description' => 'required'
+            'image' => ['required'],
+            'price' => ['required'],
+            'description' => ['required']
 
         ], [
             'title.required' => 'Entering the title is mandatory',

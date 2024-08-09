@@ -177,8 +177,8 @@
                                 <div class="col-sm-10">
                                     <select class="form-select" aria-label="Default select example">
                                         <option selected>Open this select menu</option>
-                                        <option value="1">Percent</option>
-                                        <option value="2">Number</option>
+                                        <option value="0">Percent</option>
+                                        <option value="1">Number</option>
                                     </select>
                                 </div>
                             </div>

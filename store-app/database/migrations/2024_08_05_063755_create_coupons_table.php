@@ -16,7 +16,6 @@ class CreateCouponsTable extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->string('coupon_id')->unique();
             $table->string('category_id')->nullable();
-            $table->string('category_name')->nullable();
             $table->string('title')->unique();
             $table->integer('type');
             $table->integer('amount')->nullable();
