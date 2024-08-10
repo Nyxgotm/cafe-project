@@ -149,7 +149,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Type:</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select" onchange="Myfunction(this)" aria-label="Default select example">
+                                    <select class="form-select" name="type" onchange="Myfunction(this)" aria-label="Default select example">
                                         <option selected>Open this select menu</option>
                                         <option value="0">User</option>
                                         <option value="1">Category</option>
@@ -162,7 +162,7 @@
                                 <label class=" col-form-label">Category:</label>
                                 <div class="col-sm-10">
 
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" name="category" aria-label="Default select example">
                                         <option selected>Open this select menu</option>
                                         @foreach($categories as $category)
                                             <option value="{{$category->category_id}}">{{$category->title}}</option>
@@ -173,9 +173,9 @@
 
 
                             <div class="row mb-3">
-                                <label class=" col-form-label">Amount_Type:</label>
+                                <label class=" col-form-label" >Amount_Type:</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" name="amount_type" aria-label="Default select example">
                                         <option selected>Open this select menu</option>
                                         <option value="0">Percent</option>
                                         <option value="1">Number</option>
@@ -187,14 +187,14 @@
                             <div class="row mb-3">
                                 <label for="inputNumber" class=" col-form-label">Amount:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" min="0">
+                                    <input type="text" name="amount" class="form-control" min="0">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label for="inputDate" class=" col-form-label">Expire_date:</label>
                                 <div class="col-sm-10">
-                                    <input type="date" class="form-control">
+                                    <input type="date" name="expire_date" class="form-control">
                                 </div>
                             </div>
 

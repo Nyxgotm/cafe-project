@@ -117,39 +117,67 @@
             <div>
                 <div class="card">
                     <div class="card-body">
+                        @if(!empty($errors))
+                            @foreach($errors as $error)
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <i class="bi bi-exclamation-octagon me-1"></i>
+                                    {{$error}}
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
+                            @endforeach
+                        @else
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <i class="bi bi-check-circle me-1"></i>
+                                {{$data}}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
+
+
+                        @endif
                         <!-- Table with hoverable rows -->
+
                         <table class="table table-hover">
+
                             <thead>
                             <tr>
                                 <th scope="col">Row</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Expire_Date</th>
                                 <th scope="col">Type</th>
+                                <th scope="col">Amount_type</th>
                                 <th scope="col">Amount</th>
                                 <th scope="col">Delete</th>
 
                             </tr>
                             </thead>
                             <tbody>
-
+                            @foreach($coupons as $coupon)
                                 <tr>
-                                    <th></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td><a href="">Delete</a></td>
-                                </tr>
+                                    <th>{{$coupon->coupon_id}}</th>
+                                    <td>{{$coupon->title}}</td>
+                                    <td>{{$coupon->expire_date}}</td>
+                                @if($coupon->type==0)
+                                    <td>User</td>
+                                @else
+                                    <td>Category</td>
+                                @endif
 
+                                @if($coupon->amount_type==0)
+                                    <td>Percent</td>
+                                @else
+                                    <td>Number</td>
+                                @endif
+                                    <td>{{$coupon->amount}}</td>
+                                @if(isset($coupon->category_id))
+                                    <td>{{$coupon->category->title}}</td>
+                                @else
+                                    <td>-</td>
+                                @endif
+                                    <td><a href="{{route('coupon.delete',$coupon->coupon_id)}}">Delete</a></td>
+                                </tr>
+                            @endforeach
                         </table>
+
                         <!-- End Table with hoverable rows -->
                     </div>
                 </div>
