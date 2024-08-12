@@ -97,17 +97,17 @@
                                         <a>{{$item['title']}}</a><a href="{{route('decrease.item',$item['cart_item_id'])}}">-</a><span>{{$item['price']}}</span><a href="{{route('increase.item',$item['cart_item_id'])}}">+</a>
                                     </div>
                                     <div class="menu-ingredients">
-                                        {{$item['description']}}
+                                        <p>{{$item['description']}}</p>
+                                        <p>Quantity:{{$item['quantity']}}</p>
+                                        <p>Total Price:{{$item['total_price']}}</p>
                                     </div>
-                                    <p>
-                                      Total Price:  {{$item['total_price']}}
-                                    </p>
+
                                 </div>
                             @endforeach
                     </div>
 
                     <p>
-                          Sum Total Invoice:
+                          Sum Total Invoice:{{$sum_total}}
                     </p>
 
 
@@ -115,10 +115,14 @@
                         @csrf
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label" >Coupon:</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" name="coupon">
+                        <div class="col-sm-5" >
+                            <input type="text" name="coupon"><button type="submit" >Add</button>
                         </div>
                     </div>
+
+
+
+
                     </form>
 
 

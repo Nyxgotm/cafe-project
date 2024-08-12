@@ -31,10 +31,10 @@ class CartController extends Controller
                    'total_price'=> $item->product->price * $item->quantity,
                ];
             });
+            $sum_total =$cartitems->sum('total_price');
 
 
-
-                return view('home.cart', compact('cartitems'));
+                return view('home.cart', compact('cartitems','sum_total'));
         }
         else{
         return  redirect(route('login'));
