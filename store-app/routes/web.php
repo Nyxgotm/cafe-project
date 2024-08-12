@@ -110,4 +110,6 @@ Route::post('/coupon/store',[CouponController::class,'store'])->name('coupon.sto
 
 Route::get('/coupon/delete/{coupon}',[CouponController::class,'destroy'])->name('coupon.delete');
 
+Route::post('/coupon/check',[CouponController::class,'check'])->name('coupon.check');
+
 //End Coupon Route

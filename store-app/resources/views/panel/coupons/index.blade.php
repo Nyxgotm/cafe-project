@@ -146,6 +146,7 @@
                                 <th scope="col">Type</th>
                                 <th scope="col">Amount_type</th>
                                 <th scope="col">Amount</th>
+                                <th scope="col">category</th>
                                 <th scope="col">Delete</th>
 
                             </tr>

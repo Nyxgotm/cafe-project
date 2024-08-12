@@ -37,23 +37,51 @@ class CouponController extends Controller
         $errors=array_merge($errors,Validator::make($request->all(),[
             'title'=>['required','unique:coupons'],
             'type'=>['required','in:0,1'],
-            //'category_id'=>['required_if:type,1','exists:categories,category_id'],
             'amount_type'=>['required','in:0,1'],
-            'amount'=>['required','integer'],
             'expire_date'=>['required','after:today'],
         ],[
             'title.required' => ' The title field is required.',
             'title.unique' => ' The field is already taken.',
             'type.required' => ' The type field is required.',
             'type.in' => ' The field must be user or category.',
-            //'category_id.required_if' => ' The category field is required.',
             'amount_type.required' => ' The amount_type field is required.',
             'amount_type.in' => ' The amount_type must be percent or number.',
-            'amount.required' => ' The amount field is required.',
-            'amount.integer' => ' The field must be integer.',
             'expire_date.required' => ' The expire_date field is required.',
             'expire_date.after' => ' The field must be date after today.',
-        ])->errors()->all());
+        ])->after(function ($c) use ($request){
+            if ($request['type']==1){
+                $c->errors()->merge(Validator::make($request->all(),[
+                    'category'=>['required'],
+                ],[
+                    'category.required' => ' The category field is required.',
+
+                ]));
+            }
+            if ($request['amount_type']==0){
+                $c->errors()->merge(Validator::make($request->all(),[
+                    'amount'=>['required','integer','min:1','max:99']
+                ],[
+                    'amount.required' => ' The amount field is required.',
+                    'amount.integer' => ' The field must be integer.',
+                    'amount.min'=>'The field must be more than 1',
+                    'amount.max'=>'The field must be less than 99'
+
+                ]));
+            }
+            else{
+                $c->errors()->merge(Validator::make($request->all(),[
+                    'amount'=>['required','integer','min:10000','max:1000000']
+                ],[
+                    'amount.required' => ' The amount field is required.',
+                    'amount.integer' => ' The field must be integer.',
+                    'amount.min'=>'The field must be more than 10000',
+                    'amount.max'=>'The field must be less than 1000000'
+                ]));
+
+            }
+        })->errors()->all());
+
+
 
 
         if (empty($errors)){
@@ -74,6 +102,11 @@ class CouponController extends Controller
     {
         $coupon->delete();
         return redirect('/coupon');
+
+    }
+    function check(Request $request){
+
+
 
     }
 }

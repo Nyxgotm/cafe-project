@@ -106,6 +106,21 @@
                             @endforeach
                     </div>
 
+                    <p>
+                          Sum Total Invoice:
+                    </p>
+
+
+                    <form action="{{route('coupon.check')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                    <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label" >Coupon:</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="coupon">
+                        </div>
+                    </div>
+                    </form>
+
 
 
 
