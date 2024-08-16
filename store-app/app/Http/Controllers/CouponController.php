@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Coupon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class CouponController extends Controller
@@ -22,18 +23,6 @@ class CouponController extends Controller
     }
     function store(Request $request){
         $errors=[];
-        if($request->amount_type==0){
-            if($request->amount<1 && $request->amount>99){
-                $errors=['Amount as percent must be between 1 and 99.'];
-            }
-        }
-        else{
-            if($request->amount_type==1){
-                if($request->amount<10000 && $request->amount>1000000){
-                    $errors=['Amount as number must be between 10000 and 1000000.'];
-                }
-            }
-        }
         $errors=array_merge($errors,Validator::make($request->all(),[
             'title'=>['required','unique:coupons'],
             'type'=>['required','in:0,1'],
@@ -105,7 +94,16 @@ class CouponController extends Controller
 
     }
     function check(Request $request){
+    $errors_coupon=[];
+    $errors_coupon=array_merge($errors_coupon,Validator::make($request->all(),[
+        'coupon'=>['required','exists:coupons,title']
+    ],[
+        'coupon.required' => ' The coupon field is required.',
+        'coupon.exists' => ' The coupon is not exist.',
+    ])->after(function ($t) use ($request){
 
+
+    })->errors()->all());
 
 
     }
