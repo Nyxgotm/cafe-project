@@ -39,10 +39,7 @@ class Coupon extends Model
         return $this->belongsTo(Category::class, 'category_id', 'category_id');
 
     }
-//    public function isExpire(){
-//        return Coupon::firstWhere('expire_date','>',Carbon::now());
-//    }
-    public function isExpire(){
-        return $this->expiry_date->isPast();
-    }
+   public function isExpire(){
+       return Coupon::firstWhere('expire_date','<',Carbon::now());
+   }
 }

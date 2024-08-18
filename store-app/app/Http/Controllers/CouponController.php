@@ -87,24 +87,47 @@ class CouponController extends Controller
             ->with('errors',$errors);
 
     }
+
     function destroy(Coupon $coupon)
     {
         $coupon->delete();
         return redirect('/coupon');
 
     }
+
     function check(Request $request){
+
     $errors_coupon=[];
+
     $errors_coupon=array_merge($errors_coupon,Validator::make($request->all(),[
         'coupon'=>['required','exists:coupons,title']
     ],[
         'coupon.required' => ' The coupon field is required.',
         'coupon.exists' => ' The coupon is not exist.',
     ])->after(function ($t) use ($request){
-
-
+        $coupon=Coupon::where('title',$request->coupon)->first();
+        if ($coupon->isExpire()){
+            $t->errors()->add('coupon','The coupon is expired');
+        }
+        $user=Coupon::where('title',$request->coupon)->where('type',0)->get();
+        if($user==FALSE){
+            $t->errors()->add('coupon','This coupon have diffrent type');
+        }
     })->errors()->all());
 
+    if(empty($errors_coupon)){
+        $percent=Coupon::where('title',$request->coupon)->where('amount_type',0)->get();
+        if ($percent==TRUE){
+
+
+
+        }
+        else{
+
+        }
+    }
+     return redirect('/cart')->with('errors_coupon',$errors_coupon);
 
     }
+
 }

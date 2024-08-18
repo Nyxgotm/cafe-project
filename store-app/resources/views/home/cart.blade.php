@@ -111,7 +111,7 @@
                     </p>
 
 
-                    <form action="{{route('coupon.check')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('coupon.check',$sum_total)}}" method="post" enctype="multipart/form-data">
                         @csrf
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label" >Coupon:</label>
